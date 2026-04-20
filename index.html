@@ -165,6 +165,39 @@ section{padding:60px 24px}
   letter-spacing:0.1em;margin-bottom:6px;
 }
 .card-desc{font-size:0.75rem;color:#AA9070;line-height:1.7;letter-spacing:0.04em}
+.card-toggle{
+  font-size:0.7rem;color:var(--gold);
+  margin-top:8px;cursor:pointer;
+  display:flex;align-items:center;gap:4px;
+  letter-spacing:0.1em;user-select:none;
+}
+.card-toggle::after{content:'▼';font-size:0.6rem;transition:transform 0.3s}
+.card-toggle.open::after{transform:rotate(180deg)}
+.card-detail{
+  display:none;
+  border-top:1px dashed rgba(212,160,23,0.3);
+  margin-top:10px;padding-top:10px;
+}
+.card-detail.open{display:block}
+.card-price{
+  font-family:'Kaisei Decol',serif;
+  font-size:1rem;color:var(--light-gold);
+  margin-bottom:6px;
+}
+.card-price-free{color:#4CAF50}
+.card-price-note{
+  font-size:0.7rem;color:#887050;
+  border-left:2px solid var(--gold);
+  padding-left:8px;margin-bottom:8px;line-height:1.8;
+}
+.card-recommend-title{font-size:0.68rem;color:var(--gold);letter-spacing:0.12em;margin-bottom:4px}
+.card-recommend{list-style:none;padding:0}
+.card-recommend li{
+  font-size:0.72rem;color:#AA9070;
+  line-height:1.85;
+  padding-left:10px;position:relative;
+}
+.card-recommend li::before{content:'・';position:absolute;left:0;color:var(--gold)}
 
 /* 代表挨拶 */
 .greeting-section{background:linear-gradient(180deg,#0D0500,#1A0A00)}
@@ -208,6 +241,55 @@ section{padding:60px 24px}
 }
 .map-link:hover{border-color:var(--gold);color:var(--cream)}
 .map-icon{font-size:2rem}
+
+/* 料金表 */
+.price-section{background:linear-gradient(180deg,#0D0500,#1A0A00)}
+.price-category{margin-bottom:40px}
+.price-cat-header{
+  font-family:'Kaisei Decol',serif;
+  font-size:1.1rem;color:var(--light-gold);
+  letter-spacing:0.2em;
+  border-left:4px solid var(--gold);
+  padding:6px 0 6px 16px;
+  margin-bottom:16px;
+}
+.price-cat-sub{font-size:0.75rem;color:#AA9070;letter-spacing:0.1em;margin-left:4px}
+.price-table{width:100%;border-collapse:collapse}
+.price-table tr{border-bottom:1px dashed rgba(212,160,23,0.2)}
+.price-table tr:last-child{border-bottom:none}
+.price-table td{padding:14px 12px;font-size:0.88rem;line-height:1.7;vertical-align:top}
+.price-name{color:var(--cream);font-family:'Kaisei Decol',serif;font-size:0.95rem;width:200px;min-width:160px}
+.price-amount{
+  color:var(--light-gold);font-family:'Kaisei Decol',serif;
+  font-size:1.05rem;text-align:right;white-space:nowrap;width:220px;
+}
+.price-desc{color:#AA9070;font-size:0.78rem;line-height:1.8}
+.price-note{
+  font-size:0.75rem;color:#887050;
+  background:rgba(212,160,23,0.07);
+  border-left:2px solid var(--gold);
+  padding:10px 14px;margin-top:8px;line-height:1.9;
+}
+.price-recommend{
+  margin-top:10px;
+  background:rgba(28,12,0,0.8);
+  border:1px solid rgba(212,160,23,0.2);
+  padding:12px 16px;
+}
+.price-recommend-title{font-size:0.72rem;color:var(--gold);letter-spacing:0.15em;margin-bottom:6px}
+.price-recommend ul{list-style:none;padding:0}
+.price-recommend ul li{
+  font-size:0.76rem;color:#AA9070;line-height:1.9;
+  padding-left:12px;position:relative;
+}
+.price-recommend ul li::before{content:'・';position:absolute;left:0;color:var(--gold)}
+.price-box{background:#1C0C00;border:1px solid rgba(212,160,23,0.25);padding:20px 24px;margin-bottom:2px}
+@media(max-width:640px){
+  .price-name{width:auto;display:block}
+  .price-amount{text-align:left;display:block;width:auto;margin-top:4px}
+  .price-table td{display:block;padding:8px 0}
+  .price-table tr{display:block;padding:12px 0}
+}
 
 /* お問い合わせ */
 .contact-section{
@@ -268,6 +350,7 @@ footer{
     <img class="logo-img" src="logo.jpg" alt="前田晴樹税理士事務所">
     <nav>
       <a href="#menu">お品書き</a>
+      <a href="#price">ご料金</a>
       <a href="#greeting">ご挨拶</a>
       <a href="#access">アクセス</a>
       <a href="#contact">お問い合わせ</a>
@@ -328,6 +411,22 @@ footer{
             <div class="card-tag">おすすめ</div>
             <div class="card-name">個別税務相談</div>
             <div class="card-desc">税金のギモンをその場で解決。初回無料でお気軽にどうぞ。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">1,000円（税抜）／時間</div>
+              <div class="card-price-note">※ご紹介の場合やご来所いただける場合は、初回相談料は無料です</div>
+              <div class="card-recommend-title">こんな方におすすめです</div>
+              <ul class="card-recommend">
+                <li>とりあえず相談からはじめたい</li>
+                <li>内容を伝えて見積もりをしてほしい</li>
+                <li>直接会って相談したい</li>
+                <li>オンラインが苦手</li>
+                <li>一度資料を見て判断してもらいたい</li>
+                <li>大手税理士事務所には相談しにくい</li>
+                <li>ちょっとした相談事をじっくり聞きたい</li>
+                <li>税金のことがまったくわからないけど、確定申告をしなければいけなくなった</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="menu-card">
@@ -339,6 +438,19 @@ footer{
             <div class="card-tag">人気</div>
             <div class="card-name">オンライン相談</div>
             <div class="card-desc">Zoom・Teamsで全国対応。移動不要でスピーディに相談できます。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">500円（税抜）／時間</div>
+              <div class="card-price-note">※ご紹介の場合やご来所いただける場合は、初回相談料は無料です</div>
+              <div class="card-recommend-title">こんな方におすすめです</div>
+              <ul class="card-recommend">
+                <li>自宅でゆっくり相談したい</li>
+                <li>平日は夜しか時間がない</li>
+                <li>メールでは相談したい事がまとまらない</li>
+                <li>疑問に感じる事だけを相談したい</li>
+                <li>最初に対面はいやだけど、顔を見ておきたい</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="menu-card">
@@ -350,6 +462,20 @@ footer{
             <div class="card-tag">気軽</div>
             <div class="card-name">メール相談</div>
             <div class="card-desc">24時間いつでも送信OK。まずは気軽に相談したい方に。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price card-price-free">無　料</div>
+              <div class="card-recommend-title">こんな方におすすめです</div>
+              <ul class="card-recommend">
+                <li>さくっと疑問点だけを相談したい</li>
+                <li>対面やWeb会議の予定が立てづらい方</li>
+                <li>相談内容を文章で残しておきたい</li>
+                <li>事業に関する疑問を相談したい</li>
+                <li>事業の経理・申告方法を相談したい</li>
+                <li>税理士費用の見積もりが書面でほしい</li>
+                <li>対面式相談が苦手な方</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -372,6 +498,11 @@ footer{
             <div class="card-tag">安定</div>
             <div class="card-name">個人顧問契約</div>
             <div class="card-desc">フリーランス・個人事業主の経営を月次でサポート。税務相談も無制限。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">月額 20,000円（税抜）〜</div>
+              <div class="card-price-note">確定申告報酬・年末調整含む。年間総額を12ヶ月均等割りで資金繰りへの負担を軽減。詳しくはお気軽にお問合せください。</div>
+            </div>
           </div>
         </div>
         <div class="menu-card">
@@ -383,6 +514,11 @@ footer{
             <div class="card-tag">本命</div>
             <div class="card-name">法人顧問契約</div>
             <div class="card-desc">決算・申告から節税対策まで。経営の頼れる番頭として伴走します。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">月額 30,000円（税抜）〜</div>
+              <div class="card-price-note">決算報酬・年末調整含む。年間総額を12ヶ月均等割りで資金繰りへの負担を軽減。詳しくはお気軽にお問合せください。</div>
+            </div>
           </div>
         </div>
       </div>
@@ -405,6 +541,11 @@ footer{
             <div class="card-tag">重要</div>
             <div class="card-name">相続税申告</div>
             <div class="card-desc">10ヶ月の期限内に正確・丁寧に対応。不動産評価から申告書作成まで。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">500,000円（税抜）〜</div>
+              <div class="card-price-note">土地の筆数・評価の難しさ・相続人の人数によって加算あり。相続財産（積極財産）の約1％が目安です。</div>
+            </div>
           </div>
         </div>
         <div class="menu-card">
@@ -416,6 +557,11 @@ footer{
             <div class="card-tag">計画的</div>
             <div class="card-name">贈与税申告</div>
             <div class="card-desc">生前贈与・暦年贈与・相続時精算課税など、最適な方法をご提案。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">100,000円（税抜）〜</div>
+              <div class="card-price-note">贈与されるものや金額・評価の有無などによって加算あり。</div>
+            </div>
           </div>
         </div>
       </div>
@@ -438,6 +584,11 @@ footer{
             <div class="card-tag">起業</div>
             <div class="card-name">会社設立</div>
             <div class="card-desc">株式会社・合同会社の設立をワンストップサポート。設立後の届出も対応。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">100,000円（税抜）〜</div>
+              <div class="card-price-note">会社設立からの流れや提携士業と連携し、スムーズに会社設立を行います。</div>
+            </div>
           </div>
         </div>
         <div class="menu-card">
@@ -449,6 +600,11 @@ footer{
             <div class="card-tag">楽々</div>
             <div class="card-name">記帳代行</div>
             <div class="card-desc">領収書・通帳をお送りいただくだけ。クラウド会計にも対応。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">月額 10,000円（税抜）〜</div>
+              <div class="card-price-note">仕訳数によって加算があります。</div>
+            </div>
           </div>
         </div>
         <div class="menu-card">
@@ -460,6 +616,11 @@ footer{
             <div class="card-tag">資金調達</div>
             <div class="card-name">融資支援</div>
             <div class="card-desc">事業計画書の作成から金融機関への交渉まで。創業融資も得意です。</div>
+            <div class="card-toggle" onclick="toggleDetail(this)">料金・詳細を見る</div>
+            <div class="card-detail">
+              <div class="card-price">50,000円（税抜）〜</div>
+              <div class="card-price-note">事業計画書・創業計画書・企業概要書のチェックや融資面談の立会などを行います。</div>
+            </div>
           </div>
         </div>
       </div>
@@ -534,6 +695,157 @@ footer{
   </div>
 </section>
 
+<div class="divider">— ◆ —</div>
+
+<section class="price-section" id="price" style="padding:60px 24px">
+  <div class="section-inner">
+    <div class="section-title">
+      <h2>ご 料 金</h2>
+      <p>PRICE</p>
+    </div>
+
+    <!-- スピードメニュー -->
+    <div class="price-category">
+      <div class="price-cat-header">スピードメニュー <span class="price-cat-sub">— まずは一品</span></div>
+      <div class="price-box">
+        <table class="price-table">
+          <tr>
+            <td class="price-name">個別税務相談</td>
+            <td><div class="price-desc">
+              <div class="price-note">※ご紹介の場合やご来所いただける場合は、初回相談料は無料です</div>
+              <div class="price-recommend">
+                <div class="price-recommend-title">こんな方におすすめです</div>
+                <ul>
+                  <li>とりあえず相談からはじめたい</li>
+                  <li>内容を伝えて見積もりをしてほしい</li>
+                  <li>直接会って相談したい</li>
+                  <li>オンラインが苦手</li>
+                  <li>一度資料を見て判断してもらいたい</li>
+                  <li>大手税理士事務所には相談しにくい</li>
+                  <li>ちょっとした相談事をじっくり聞きたい</li>
+                  <li>税金のことがまったくわからないけど、確定申告をしなければいけなくなった</li>
+                </ul>
+              </div>
+            </div></td>
+            <td class="price-amount">1,000円（税抜）<br><span style="font-size:0.78rem;color:#CCA">／時間</span></td>
+          </tr>
+          <tr>
+            <td class="price-name">オンライン相談</td>
+            <td><div class="price-desc">
+              <div class="price-note">※ご紹介の場合やご来所いただける場合は、初回相談料は無料です</div>
+              <div class="price-recommend">
+                <div class="price-recommend-title">こんな方におすすめです</div>
+                <ul>
+                  <li>自宅でゆっくり相談したい</li>
+                  <li>平日は夜しか時間がない</li>
+                  <li>メールでは相談したい事がまとまらない</li>
+                  <li>疑問に感じる事だけを相談したい</li>
+                  <li>最初に対面はいやだけど、顔を見ておきたい</li>
+                </ul>
+              </div>
+            </div></td>
+            <td class="price-amount">500円（税抜）<br><span style="font-size:0.78rem;color:#CCA">／時間</span></td>
+          </tr>
+          <tr>
+            <td class="price-name">メール相談</td>
+            <td><div class="price-desc">
+              <div class="price-recommend">
+                <div class="price-recommend-title">こんな方におすすめです</div>
+                <ul>
+                  <li>さくっと疑問点だけを相談したい</li>
+                  <li>対面やWeb会議の予定が立てづらい方</li>
+                  <li>相談内容を文章で残しておきたい</li>
+                  <li>事業に関する疑問を相談したい</li>
+                  <li>事業の経理・申告方法を相談したい</li>
+                  <li>税理士費用の見積もりが書面でほしい</li>
+                  <li>対面式相談が苦手な方</li>
+                </ul>
+              </div>
+            </div></td>
+            <td class="price-amount" style="color:#4CAF50">無　料</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 定番メニュー -->
+    <div class="price-category">
+      <div class="price-cat-header">定番メニュー <span class="price-cat-sub">— オススメ</span></div>
+      <div class="price-box">
+        <table class="price-table">
+          <tr>
+            <td class="price-name">個人顧問契約</td>
+            <td class="price-desc">
+              確定申告報酬・年末調整含む。税理士報酬は月額顧問料（12ヶ月）、確定申告報酬（6ヶ月分）、年末調整等報酬（1ヶ月分）で成り立ちます（計19ヶ月分）。弊所では年間総額を12ヶ月で均等割りし、資金繰りへの負担を軽減しています。
+              <div class="price-note">詳しくはお気軽にお問合せください。</div>
+            </td>
+            <td class="price-amount">月額 20,000円（税抜）〜</td>
+          </tr>
+          <tr>
+            <td class="price-name">法人顧問契約</td>
+            <td class="price-desc">
+              決算報酬・年末調整含む。税理士報酬は月額顧問料（12ヶ月）、決算報酬（6ヶ月分）、年末調整等報酬（1ヶ月分）で成り立ちます（計19ヶ月分）。弊所では年間総額を12ヶ月で均等割りし、資金繰りへの負担を軽減しています。
+              <div class="price-note">詳しくはお気軽にお問合せください。</div>
+            </td>
+            <td class="price-amount">月額 30,000円（税抜）〜</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 旬のメニュー -->
+    <div class="price-category">
+      <div class="price-cat-header">旬のメニュー <span class="price-cat-sub">— 旬の味覚をご堪能ください</span></div>
+      <div class="price-box">
+        <table class="price-table">
+          <tr>
+            <td class="price-name">相続税申告</td>
+            <td class="price-desc">土地の筆数や評価の難しさ、相続人の人数によって加算があります。相続財産（積極財産）の約1％が目安です。</td>
+            <td class="price-amount">500,000円（税抜）〜</td>
+          </tr>
+          <tr>
+            <td class="price-name">贈与税申告</td>
+            <td class="price-desc">贈与されるものや金額、評価の有無などによって加算があります。</td>
+            <td class="price-amount">100,000円（税抜）〜</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 逸品 -->
+    <div class="price-category">
+      <div class="price-cat-header">逸品 <span class="price-cat-sub">— こだわりの一皿</span></div>
+      <div class="price-box">
+        <table class="price-table">
+          <tr>
+            <td class="price-name">会社設立サポート</td>
+            <td class="price-desc">会社設立からの流れや提携士業と連携し、スムーズに会社設立を行います。</td>
+            <td class="price-amount">100,000円（税抜）〜</td>
+          </tr>
+          <tr>
+            <td class="price-name">記帳代行</td>
+            <td class="price-desc">仕訳数によって加算があります。</td>
+            <td class="price-amount">月額 10,000円（税抜）〜</td>
+          </tr>
+          <tr>
+            <td class="price-name">融資支援</td>
+            <td class="price-desc">事業計画書や創業計画書、企業概要書のチェックや融資の面談の立会などを行います。</td>
+            <td class="price-amount">50,000円（税抜）〜</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="price-note" style="max-width:700px;margin:0 auto;text-align:center;font-size:0.8rem">
+      ※料金はすべて税抜表示です。別途消費税がかかります。<br>
+      ※上記はあくまでも目安です。業務内容・規模によって異なります。お気軽にご相談ください。
+    </div>
+
+  </div>
+</section>
+
+<div class="divider">— ◆ —</div>
+
 <section class="contact-section" id="contact">
   <div class="contact-inner">
     <div class="section-title">
@@ -555,5 +867,12 @@ footer{
   <div class="footer-copy" style="margin-top:6px">© 前田晴樹税理士事務所 All Rights Reserved.</div>
 </footer>
 
+<script>
+function toggleDetail(el){
+  el.classList.toggle('open');
+  var detail = el.nextElementSibling;
+  detail.classList.toggle('open');
+}
+</script>
 </body>
 </html>
