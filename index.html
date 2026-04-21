@@ -14,18 +14,22 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --red:#8B0000;--dark-red:#6B0000;--cream:#FDF6E3;--dark:#1A0A00;
-  --gold:#D4A017;--light-gold:#F0C040;--charcoal:#2C1810;
+  --bg:#0A0C12;--bg2:#0F1220;--bg3:#141828;
+  --silver:#C8CED8;--light-silver:#E8ECF2;--dim-silver:#7A8494;
+  --amber:#C8922A;--light-amber:#E8B84A;--pale-amber:#F5DFA0;
+  --border:rgba(200,210,220,0.12);--border-accent:rgba(200,146,42,0.4);
+  --charcoal:#1E2233;
+  --dark:#0A0C12;--dark-red:#0F1220;--gold:#C8922A;--light-gold:#E8B84A;--cream:#C8CED8;
 }
 html{scroll-behavior:smooth}
-body{background:var(--dark);color:var(--cream);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden}
+body{background:var(--dark);color:var(--light-silver);font-family:'Noto Sans JP',sans-serif;overflow-x:hidden}
 
 /* ヘッダー */
 header{
-  background:#F8F4EE;
-  border-bottom:4px solid var(--gold);
+  background:rgba(10,12,18,0.97);
+  border-bottom:1px solid var(--border-accent);
   position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 20px rgba(0,0,0,0.5);
+  backdrop-filter:blur(8px);
 }
 .header-inner{
   max-width:1100px;margin:0 auto;
@@ -34,24 +38,24 @@ header{
 }
 .logo-img{height:52px;width:auto}
 nav a{
-  color:var(--charcoal);text-decoration:none;font-size:0.8rem;
-  margin-left:18px;letter-spacing:0.12em;
-  border-bottom:2px solid transparent;
+  color:var(--dim-silver);text-decoration:none;font-size:0.78rem;
+  margin-left:20px;letter-spacing:0.15em;
+  border-bottom:1px solid transparent;
   padding-bottom:2px;transition:border-color 0.2s,color 0.2s;
 }
 nav a:hover{border-color:var(--red);color:var(--red)}
 
 /* ヒーロー */
 .hero{
-  background:linear-gradient(170deg,#3D0000 0%,#1A0A00 60%,#0D0500 100%);
+  background:var(--bg);
   padding:80px 24px 60px;text-align:center;
   position:relative;overflow:hidden;
 }
 .hero::before{
   content:'';position:absolute;inset:0;
   background:
-    repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(180,80,0,0.06) 60px,rgba(180,80,0,0.06) 61px),
-    repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(180,80,0,0.04) 60px,rgba(180,80,0,0.04) 61px);
+    repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(200,146,42,0.03) 60px,rgba(200,146,42,0.03) 61px),
+    repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(200,146,42,0.02) 60px,rgba(200,146,42,0.02) 61px);
 }
 .noren{
   display:inline-block;
@@ -78,30 +82,30 @@ nav a:hover{border-color:var(--red);color:var(--red)}
 .hero-sub{font-size:0.75rem;color:#FFD;letter-spacing:0.3em;margin-top:6px}
 .hero-catch{
   font-size:clamp(0.9rem,2vw,1.05rem);
-  color:#E8D5A3;margin-top:48px;line-height:2.2;letter-spacing:0.08em;
+  color:var(--dim-silver);margin-top:40px;line-height:2.2;letter-spacing:0.08em;
   position:relative;
 }
-.hero-catch strong{color:var(--light-gold);font-family:'Kaisei Decol',serif;font-size:1.15em}
+.hero-catch strong{color:var(--light-amber);font-family:'Kaisei Decol',serif;font-size:1.15em}
 
 /* 統計バナー */
 .stats-section{
-  background:var(--dark-red);
-  border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);
+  background:var(--bg2);
+  border-top:1px solid var(--border-accent);border-bottom:1px solid var(--border-accent);
   padding:36px 24px;
 }
 .stats-grid{
   max-width:900px;margin:0 auto;
   display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:rgba(212,160,23,0.3);
+  background:var(--border-accent);
 }
-.stat-item{background:var(--dark-red);text-align:center;padding:24px 16px}
+.stat-item{background:var(--bg2);text-align:center;padding:24px 16px}
 .stat-num{
   font-family:'Kaisei Decol',serif;
   font-size:clamp(1.8rem,4vw,3rem);
   color:var(--light-gold);line-height:1;
 }
-.stat-unit{font-size:0.85rem;color:#FFD}
-.stat-label{font-size:0.72rem;color:#CCA;letter-spacing:0.2em;margin-top:6px}
+.stat-unit{font-size:0.85rem;color:var(--silver)}
+.stat-label{font-size:0.72rem;color:var(--dim-silver);letter-spacing:0.2em;margin-top:6px}
 
 /* セクション共通 */
 section{padding:60px 24px}
@@ -110,68 +114,67 @@ section{padding:60px 24px}
 .section-title h2{
   font-family:'Kaisei Decol',serif;
   font-size:clamp(1.4rem,3vw,2rem);
-  color:var(--light-gold);letter-spacing:0.2em;
+  color:var(--light-silver);letter-spacing:0.3em;
   display:inline-block;
-  border-bottom:3px double var(--gold);padding-bottom:8px;
+  border-bottom:1px solid var(--amber);padding-bottom:10px;
 }
-.section-title p{color:#CCA;font-size:0.78rem;letter-spacing:0.25em;margin-top:8px}
+.section-title p{color:var(--dim-silver);font-size:0.72rem;letter-spacing:0.3em;margin-top:10px}
 
 /* お品書き */
-.menu-section{background:linear-gradient(180deg,#1A0A00,#0D0500)}
+.menu-section{background:var(--bg)}
 .category{margin-bottom:48px}
 .cat-header{
   display:flex;align-items:center;gap:16px;
   margin-bottom:20px;
-  border-bottom:2px solid rgba(212,160,23,0.35);
+  border-bottom:1px solid var(--border);
   padding-bottom:14px;
 }
 .cat-badge{
   font-family:'Kaisei Decol',serif;
   font-size:0.72rem;letter-spacing:0.2em;
   padding:4px 12px;
-  border:2px solid var(--gold);
-  color:var(--gold);white-space:nowrap;
+  border:1px solid var(--amber);
+  color:var(--amber);white-space:nowrap;
 }
 .cat-name{
   font-family:'Kaisei Decol',serif;
   font-size:clamp(1.1rem,2.5vw,1.5rem);
-  color:var(--light-gold);letter-spacing:0.2em;
+  color:var(--light-silver);letter-spacing:0.3em;
 }
-.cat-sub{font-size:0.78rem;color:#AA9070;letter-spacing:0.1em;margin-left:auto}
-.items-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.cat-sub{font-size:0.78rem;color:var(--dim-silver);letter-spacing:0.1em;margin-left:auto}
+.items-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border)}
 .menu-card{
-  background:#1C0C00;
-  border:1px solid rgba(212,160,23,0.25);
+  background:var(--bg2);
   display:flex;overflow:hidden;
   transition:border-color 0.25s,transform 0.2s;
 }
-.menu-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.menu-card:hover{background:var(--bg3)}
 .card-img{
   width:110px;flex-shrink:0;
-  background:#2A1005;overflow:hidden;position:relative;
+  background:var(--bg3);overflow:hidden;position:relative;
 }
-.card-img img{width:100%;height:100%;object-fit:cover;opacity:0.85;transition:opacity 0.3s}
-.menu-card:hover .card-img img{opacity:1}
+.card-img img{width:100%;height:100%;object-fit:cover;opacity:0.6;transition:opacity 0.3s;filter:grayscale(30%)}
+.menu-card:hover .card-img img{opacity:0.85}
 .img-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent 60%,rgba(28,12,0,0.6));
+  background:linear-gradient(90deg,transparent 40%,rgba(10,12,18,0.7));
 }
 .card-body{padding:14px 16px;flex:1}
 .card-tag{
   display:inline-block;
   font-size:0.62rem;letter-spacing:0.15em;
-  background:var(--dark-red);color:var(--light-gold);
-  border:1px solid var(--gold);
+  color:var(--amber);
+  border:1px solid var(--amber);
   padding:2px 8px;margin-bottom:8px;
 }
 .card-name{
   font-family:'Kaisei Decol',serif;
-  font-size:1.0rem;color:var(--cream);
+  font-size:0.95rem;color:var(--light-silver);
   letter-spacing:0.1em;margin-bottom:6px;
 }
-.card-desc{font-size:0.75rem;color:#AA9070;line-height:1.7;letter-spacing:0.04em}
+.card-desc{font-size:0.75rem;color:var(--dim-silver);line-height:1.8;letter-spacing:0.04em}
 .card-toggle{
-  font-size:0.7rem;color:var(--gold);
+  font-size:0.7rem;color:var(--amber);
   margin-top:8px;cursor:pointer;
   display:flex;align-items:center;gap:4px;
   letter-spacing:0.1em;user-select:none;
@@ -180,115 +183,115 @@ section{padding:60px 24px}
 .card-toggle.open::after{transform:rotate(180deg)}
 .card-detail{
   display:none;
-  border-top:1px dashed rgba(212,160,23,0.3);
+  border-top:1px solid var(--border);
   margin-top:10px;padding-top:10px;
 }
 .card-detail.open{display:block}
 .card-price{
   font-family:'Kaisei Decol',serif;
-  font-size:1rem;color:var(--light-gold);
+  font-size:1rem;color:var(--light-amber);
   margin-bottom:6px;
 }
-.card-price-free{color:#4CAF50}
+.card-price-free{color:#6EC87A}
 .card-price-note{
-  font-size:0.7rem;color:#887050;
-  border-left:2px solid var(--gold);
+  font-size:0.7rem;color:var(--dim-silver);
+  border-left:2px solid var(--amber);
   padding-left:8px;margin-bottom:8px;line-height:1.8;
 }
-.card-recommend-title{font-size:0.68rem;color:var(--gold);letter-spacing:0.12em;margin-bottom:4px}
+.card-recommend-title{font-size:0.68rem;color:var(--amber);letter-spacing:0.12em;margin-bottom:4px}
 .card-recommend{list-style:none;padding:0}
 .card-recommend li{
   font-size:0.72rem;color:#AA9070;
   line-height:1.85;
   padding-left:10px;position:relative;
 }
-.card-recommend li::before{content:'・';position:absolute;left:0;color:var(--gold)}
+.card-recommend li::before{content:'—';position:absolute;left:0;color:var(--amber)}
 
 /* 代表挨拶 */
-.greeting-section{background:linear-gradient(180deg,#0D0500,#1A0A00)}
+.greeting-section{background:var(--bg2)}
 .greeting-box{
   display:flex;gap:40px;align-items:flex-start;
-  background:#120600;border:2px solid rgba(212,160,23,0.4);
+  background:var(--bg2);border:1px solid var(--border);
   padding:36px;flex-wrap:wrap;
 }
 .greeting-avatar{width:120px;flex-shrink:0;text-align:center}
 .avatar-circle{
   width:100px;height:100px;border-radius:50%;
-  background:linear-gradient(135deg,var(--charcoal),#3D1A05);
-  border:3px solid var(--gold);
+  background:var(--bg3);
+  border:1px solid var(--amber);
   display:flex;align-items:center;justify-content:center;
   margin:0 auto 12px;
-  font-family:'Kaisei Decol',serif;font-size:2rem;color:var(--light-gold);
+  font-family:'Kaisei Decol',serif;font-size:2rem;color:var(--light-amber);
 }
-.avatar-name{font-size:0.78rem;color:#CCA;letter-spacing:0.15em;line-height:1.9}
+.avatar-name{font-size:0.78rem;color:var(--dim-silver);letter-spacing:0.15em;line-height:1.9}
 .greeting-text{flex:1;min-width:200px}
-.greeting-text p{color:#D5C4A1;line-height:2.1;font-size:0.9rem;margin-bottom:16px;letter-spacing:0.05em}
-.greeting-text p strong{color:var(--light-gold);font-family:'Kaisei Decol',serif}
+.greeting-text p{color:var(--silver);line-height:2.1;font-size:0.9rem;margin-bottom:16px;letter-spacing:0.05em}
+.greeting-text p strong{color:var(--light-amber);font-family:'Kaisei Decol',serif}
 
 /* アクセス */
-.access-section{background:#0D0500}
-.access-box{background:#120600;border:2px solid rgba(212,160,23,0.4);padding:32px}
+.access-section{background:var(--bg2)}
+.access-box{background:var(--bg2);border:1px solid var(--border);padding:32px}
 .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
 .info-row{
   display:flex;gap:16px;padding:13px 0;
-  border-bottom:1px dashed rgba(212,160,23,0.25);align-items:flex-start;
+  border-bottom:1px solid var(--border);align-items:flex-start;
 }
 .info-row:last-child{border-bottom:none}
-.info-label{font-size:0.72rem;color:var(--gold);letter-spacing:0.2em;min-width:58px;margin-top:2px}
-.info-val{font-size:0.88rem;color:var(--cream);line-height:1.7}
+.info-label{font-size:0.72rem;color:var(--amber);letter-spacing:0.2em;min-width:58px;margin-top:2px}
+.info-val{font-size:0.88rem;color:var(--silver);line-height:1.7}
 .map-link{
   display:block;
-  background:#1C0C00;border:2px dashed rgba(212,160,23,0.3);
+  background:var(--bg2);border:1px solid var(--border);
   height:220px;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:10px;color:#887050;font-size:0.82rem;
+  flex-direction:column;gap:10px;color:var(--dim-silver);font-size:0.8rem;
   letter-spacing:0.1em;text-decoration:none;
   transition:border-color 0.2s,color 0.2s;
 }
-.map-link:hover{border-color:var(--gold);color:var(--cream)}
+.map-link:hover{border-color:var(--amber);color:var(--light-silver)}
 .map-icon{font-size:2rem}
 
 /* 料金表 */
-.price-section{background:linear-gradient(180deg,#0D0500,#1A0A00)}
+.price-section{background:var(--bg2)}
 .price-category{margin-bottom:40px}
 .price-cat-header{
   font-family:'Kaisei Decol',serif;
-  font-size:1.1rem;color:var(--light-gold);
+  font-size:1.1rem;color:var(--light-silver);
   letter-spacing:0.2em;
-  border-left:4px solid var(--gold);
+  border-left:3px solid var(--amber);
   padding:6px 0 6px 16px;
   margin-bottom:16px;
 }
-.price-cat-sub{font-size:0.75rem;color:#AA9070;letter-spacing:0.1em;margin-left:4px}
+.price-cat-sub{font-size:0.75rem;color:var(--dim-silver);letter-spacing:0.1em;margin-left:4px}
 .price-table{width:100%;border-collapse:collapse}
-.price-table tr{border-bottom:1px dashed rgba(212,160,23,0.2)}
+.price-table tr{border-bottom:1px solid var(--border)}
 .price-table tr:last-child{border-bottom:none}
 .price-table td{padding:14px 12px;font-size:0.88rem;line-height:1.7;vertical-align:top}
-.price-name{color:var(--cream);font-family:'Kaisei Decol',serif;font-size:0.95rem;width:200px;min-width:160px}
+.price-name{color:var(--light-silver);font-family:'Kaisei Decol',serif;font-size:0.95rem;width:200px;min-width:160px}
 .price-amount{
-  color:var(--light-gold);font-family:'Kaisei Decol',serif;
+  color:var(--light-amber);font-family:'Kaisei Decol',serif;
   font-size:1.05rem;text-align:right;white-space:nowrap;width:220px;
 }
-.price-desc{color:#AA9070;font-size:0.78rem;line-height:1.8}
+.price-desc{color:var(--dim-silver);font-size:0.75rem;line-height:1.8}
 .price-note{
   font-size:0.75rem;color:#887050;
-  background:rgba(212,160,23,0.07);
-  border-left:2px solid var(--gold);
+  background:rgba(200,146,42,0.05);
+  border-left:2px solid var(--amber);
   padding:10px 14px;margin-top:8px;line-height:1.9;
 }
 .price-recommend{
   margin-top:10px;
-  background:rgba(28,12,0,0.8);
-  border:1px solid rgba(212,160,23,0.2);
+  background:var(--bg);
+  border:1px solid var(--border);
   padding:12px 16px;
 }
-.price-recommend-title{font-size:0.72rem;color:var(--gold);letter-spacing:0.15em;margin-bottom:6px}
+.price-recommend-title{font-size:0.72rem;color:var(--amber);letter-spacing:0.15em;margin-bottom:6px}
 .price-recommend ul{list-style:none;padding:0}
 .price-recommend ul li{
   font-size:0.76rem;color:#AA9070;line-height:1.9;
   padding-left:12px;position:relative;
 }
-.price-recommend ul li::before{content:'・';position:absolute;left:0;color:var(--gold)}
-.price-box{background:#1C0C00;border:1px solid rgba(212,160,23,0.25);padding:20px 24px;margin-bottom:2px}
+.price-recommend ul li::before{content:'—';position:absolute;left:0;color:var(--amber)}
+.price-box{background:var(--bg);border:1px solid var(--border);padding:20px 24px;margin-bottom:2px}
 @media(max-width:640px){
   .price-name{width:auto;display:block}
   .price-amount{text-align:left;display:block;width:auto;margin-top:4px}
@@ -298,27 +301,27 @@ section{padding:60px 24px}
 
 /* お問い合わせ */
 .contact-section{
-  background:linear-gradient(180deg,#1A0A00,#3D0000);
+  background:var(--bg);
   text-align:center;
 }
 .contact-inner{max-width:600px;margin:0 auto}
 .contact-box{
-  border:3px solid var(--gold);padding:40px;
-  background:#1A0500;display:inline-block;width:100%;position:relative;
+  border:1px solid var(--border-accent);padding:40px;
+  background:var(--bg2);display:inline-block;width:100%;position:relative;
 }
 .contact-box::before{
   content:'ご予約・お問い合わせ';
-  font-family:'Kaisei Decol',serif;font-size:0.88rem;color:var(--gold);
-  position:absolute;top:-16px;left:50%;transform:translateX(-50%);
-  background:#1A0500;padding:0 16px;letter-spacing:0.2em;
+  font-family:'Kaisei Decol',serif;font-size:0.82rem;color:var(--amber);
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:var(--bg2);padding:0 16px;letter-spacing:0.2em;
 }
 .tel{
   font-family:'Kaisei Decol',serif;
   font-size:clamp(1.8rem,5vw,2.6rem);
-  color:var(--light-gold);letter-spacing:0.1em;
-  margin:16px 0 6px;text-shadow:0 0 20px rgba(240,192,64,0.3);
+  color:var(--light-amber);letter-spacing:0.1em;
+  margin:16px 0 6px;
 }
-.tel-sub{font-size:0.72rem;color:#AA9070;letter-spacing:0.2em;margin-bottom:20px}
+.tel-sub{font-size:0.72rem;color:var(--dim-silver);letter-spacing:0.2em;margin-bottom:0}
 .mail-btn{
   display:inline-block;background:transparent;color:var(--cream);
   border:2px solid var(--gold);padding:11px 32px;
@@ -329,13 +332,13 @@ section{padding:60px 24px}
 
 /* フッター */
 footer{
-  background:var(--dark);border-top:2px solid rgba(212,160,23,0.3);
+  background:var(--bg2);border-top:1px solid var(--border);
   padding:24px;text-align:center;
 }
-.footer-logo{font-family:'Kaisei Decol',serif;font-size:0.88rem;color:var(--gold);letter-spacing:0.2em;margin-bottom:8px}
-.footer-copy{font-size:0.7rem;color:#665544;letter-spacing:0.08em}
+.footer-logo{font-family:'Kaisei Decol',serif;font-size:0.88rem;color:var(--amber);letter-spacing:0.2em;margin-bottom:8px}
+.footer-copy{font-size:0.7rem;color:var(--dim-silver);letter-spacing:0.08em}
 
-.divider{text-align:center;padding:8px 0;color:rgba(212,160,23,0.4);letter-spacing:0.3em;font-size:0.8rem}
+.divider{text-align:center;padding:8px 0;color:var(--border-accent);letter-spacing:0.3em;font-size:0.75rem}
 
 @media(max-width:640px){
   .access-grid{grid-template-columns:1fr}
@@ -380,7 +383,7 @@ footer{
     </div>
     <div style="height:16px;background:#3A1A05;border:2px solid var(--gold);border-radius:4px"></div>
     <div style="background:var(--dark-red);border:3px solid var(--gold);border-top:none;padding:24px 32px 36px">
-      <div style="font-family:'Kaisei Decol',serif;font-size:clamp(1.2rem,5.5vw,3rem);color:var(--light-gold);letter-spacing:0.2em;text-shadow:2px 2px 8px rgba(0,0,0,0.8);line-height:1.5">前田晴樹<br>税理士事務所</div>
+      <div style="font-family:'Kaisei Decol',serif;font-size:clamp(1.2rem,5.5vw,3rem);color:var(--light-silver);letter-spacing:0.3em;text-shadow:2px 2px 8px rgba(0,0,0,0.8);line-height:1.5">前田晴樹<br>税理士事務所</div>
       <div style="font-size:clamp(0.55rem,1.8vw,0.75rem);color:#CCA;letter-spacing:0.2em;margin-top:10px;text-align:center">HARUKI MAEDA TAX ACCOUNTANT OFFICE</div>
     </div>
   </div>
@@ -678,9 +681,9 @@ footer{
 
     <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
 
-      <div style="background:#1C0C00;border:1px solid rgba(212,160,23,0.25);padding:24px">
-        <div style="font-family:'Kaisei Decol',serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.2em;border-bottom:1px solid rgba(212,160,23,0.3);padding-bottom:10px;margin-bottom:16px">経 歴</div>
-        <div style="font-size:0.8rem;color:#D5C4A1;line-height:2.2">
+      <div style="background:var(--bg2);border:1px solid var(--border);padding:24px">
+        <div style="font-family:'Kaisei Decol',serif;font-size:0.85rem;color:var(--amber);letter-spacing:0.2em;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:16px">経 歴</div>
+        <div style="font-size:0.8rem;color:var(--silver);line-height:2.2">
           <div style="display:flex;gap:12px;margin-bottom:8px">
             <span style="color:var(--gold);white-space:nowrap;font-size:0.75rem">1986年</span>
             <span>名古屋市緑区生まれ</span>
@@ -713,16 +716,16 @@ footer{
       </div>
 
       <div style="display:flex;flex-direction:column;gap:20px">
-        <div style="background:#1C0C00;border:1px solid rgba(212,160,23,0.25);padding:24px">
-          <div style="font-family:'Kaisei Decol',serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.2em;border-bottom:1px solid rgba(212,160,23,0.3);padding-bottom:10px;margin-bottom:16px">保 有 資 格</div>
-          <div style="font-size:0.88rem;color:#D5C4A1;line-height:2">
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:24px">
+          <div style="font-family:'Kaisei Decol',serif;font-size:0.85rem;color:var(--amber);letter-spacing:0.2em;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:16px">保 有 資 格</div>
+          <div style="font-size:0.88rem;color:var(--silver);line-height:2">
             <div>🏅 税理士</div>
           </div>
         </div>
 
-        <div style="background:#1C0C00;border:1px solid rgba(212,160,23,0.25);padding:24px">
-          <div style="font-family:'Kaisei Decol',serif;font-size:0.85rem;color:var(--gold);letter-spacing:0.2em;border-bottom:1px solid rgba(212,160,23,0.3);padding-bottom:10px;margin-bottom:16px">趣 味 ・ 好 き な こ と</div>
-          <div style="font-size:0.82rem;color:#D5C4A1;line-height:2.2">
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:24px">
+          <div style="font-family:'Kaisei Decol',serif;font-size:0.85rem;color:var(--amber);letter-spacing:0.2em;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:16px">趣 味 ・ 好 き な こ と</div>
+          <div style="font-size:0.82rem;color:var(--silver);line-height:2.2">
             <div>🎲 ギャンブル（競艇・バカラ）</div>
             <div>⛳ スポーツ（ゴルフ・卓球・バレー・テニス）</div>
             <div>🃏 大富豪（毎年大富豪大会出場）</div>
@@ -735,11 +738,68 @@ footer{
 
     </div>
 
-    <div style="margin-top:20px;background:#1C0C00;border:1px solid rgba(212,160,23,0.25);padding:24px;text-align:center">
-      <div style="font-family:'Kaisei Decol',serif;font-size:0.78rem;color:var(--gold);letter-spacing:0.3em;margin-bottom:12px">好 き な 言 葉</div>
-      <div style="font-family:'Kaisei Decol',serif;font-size:clamp(1.4rem,3vw,2rem);color:var(--light-gold);letter-spacing:0.3em;text-shadow:0 0 20px rgba(240,192,64,0.3)">「 人 生 ギ ャ ン ブ ル 」</div>
+    <div style="margin-top:20px;background:var(--bg2);border:1px solid var(--border);padding:32px">
+      <div style="font-family:'Kaisei Decol',serif;font-size:0.78rem;color:var(--amber);letter-spacing:0.3em;margin-bottom:16px;text-align:center">好 き な 言 葉</div>
+      <div style="font-family:'Kaisei Decol',serif;font-size:clamp(1.4rem,3vw,2rem);color:var(--light-amber);letter-spacing:0.3em;text-align:center;margin-bottom:28px">「 人 生 ギ ャ ン ブ ル 」</div>
+      <div style="border-top:1px solid var(--border);padding-top:24px">
+        <p style="font-size:0.85rem;color:var(--silver);line-height:2.2;letter-spacing:0.05em;margin-bottom:14px">「人生ギャンブル」という言葉には、いろいろな意味があります。単純にギャンブル（賭け事）が好きということだけではなく、<strong style="color:var(--light-amber)">人生は選択の連続で、どの選択をするかによってその後の人生に影響してくる</strong>ということです。</p>
+        <p style="font-size:0.85rem;color:var(--silver);line-height:2.2;letter-spacing:0.05em;margin-bottom:14px">例えば、毎日食べるものによって将来の健康状態が変わってきたり、付き合っていく友人や仲間によってもその影響で今後の人生が変わっていくこともあります。そういう意味では、今生きているすべての人が毎日ギャンブル（選択）をしています。</p>
+        <p style="font-size:0.85rem;color:var(--silver);line-height:2.2;letter-spacing:0.05em;margin-bottom:14px">どれだけ努力しても結果が読めない、運やタイミングで大きく変わることがあります。ただし、完全な運任せではなく、<strong style="color:var(--light-amber)">人生というギャンブルは戦略次第で勝率は上げられる</strong>と思っております。</p>
+        <p style="font-size:0.85rem;color:var(--silver);line-height:2.2;letter-spacing:0.05em">それこそ税理士の選択も考え方によってはギャンブルの一つです。経営というギャンブルを乗り越えるためにも日々最適な選択をして、<strong style="color:var(--light-amber)">一緒に人生というギャンブルに立ち向かっていきましょう。</strong></p>
+      </div>
     </div>
 
+  </div>
+</section>
+
+<div class="divider">— ◆ —</div>
+
+<section style="background:var(--bg2);padding:60px 24px" id="voice">
+  <div class="section-inner">
+    <div class="section-title">
+      <h2>お 客 様 の 声</h2>
+      <p>TESTIMONIALS</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border)">
+
+      <div style="background:var(--bg);padding:28px 24px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--bg3);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;font-family:'Kaisei Decol',serif;font-size:1rem;color:var(--light-amber);flex-shrink:0">女</div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--light-silver);letter-spacing:0.1em">30代・女性</div>
+            <div style="font-size:0.68rem;color:var(--amber);letter-spacing:0.1em;margin-top:2px">フリーランス（デザイナー）</div>
+          </div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--dim-silver);line-height:2;border-left:2px solid var(--amber);padding-left:14px">確定申告のことが全くわからず、不安なまま相談しました。難しい言葉を使わずにわかりやすく説明していただき、節税についても丁寧に教えてもらえました。毎年お世話になっています。</div>
+        <div style="margin-top:12px;font-size:0.68rem;color:var(--dim-silver)">※ご紹介でご来所</div>
+      </div>
+
+      <div style="background:var(--bg);padding:28px 24px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--bg3);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;font-family:'Kaisei Decol',serif;font-size:1rem;color:var(--light-amber);flex-shrink:0">男</div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--light-silver);letter-spacing:0.1em">40代・男性</div>
+            <div style="font-size:0.68rem;color:var(--amber);letter-spacing:0.1em;margin-top:2px">建設業・法人（社員5名）</div>
+          </div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--dim-silver);line-height:2;border-left:2px solid var(--amber);padding-left:14px">顧問契約をして1年。月次の試算表を毎月確認してもらえるので、資金繰りの判断が早くできるようになりました。気軽に相談できる距離感がちょうどよく、頼りにしています。</div>
+        <div style="margin-top:12px;font-size:0.68rem;color:var(--dim-silver)">※取引先様よりご紹介</div>
+      </div>
+
+      <div style="background:var(--bg);padding:28px 24px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--bg3);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;font-family:'Kaisei Decol',serif;font-size:1rem;color:var(--light-amber);flex-shrink:0">男</div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--light-silver);letter-spacing:0.1em">40代・男性</div>
+            <div style="font-size:0.68rem;color:var(--amber);letter-spacing:0.1em;margin-top:2px">飲食業・法人（店舗経営）</div>
+          </div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--dim-silver);line-height:2;border-left:2px solid var(--amber);padding-left:14px">会社設立から相談に乗っていただき、設立後の税務届出や記帳まで一括でお任せできました。他の士業の先生も紹介していただき、本当に助かりました。独立してよかったと思えるのは前田先生のおかげです。</div>
+        <div style="margin-top:12px;font-size:0.68rem;color:var(--dim-silver)">※知人よりご紹介</div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:16px;font-size:0.7rem;color:var(--dim-silver)">※掲載にあたりお客様のご了承をいただいております。業種・内容は一部変更しています。</div>
   </div>
 </section>
 
@@ -945,18 +1005,17 @@ footer{
       <p>CONTACT</p>
     </div>
     <div class="contact-box">
-      <div style="color:#CCA;font-size:0.78rem;letter-spacing:0.2em;margin-bottom:4px">まずはお気軽にフォームからどうぞ</div>
-      <div style="font-family:'Kaisei Decol',serif;font-size:1.1rem;color:var(--light-gold);letter-spacing:0.15em;margin-bottom:20px">↓ お問い合わせフォームへ（推奨）↓</div>
-      <div style="width:100%;height:2px;background:rgba(212,160,23,0.3);margin-bottom:24px"></div>
-      <div style="color:#CCA;font-size:0.78rem;letter-spacing:0.2em">お電話でのお問い合わせ</div>
+      <div style="color:var(--dim-silver);font-size:0.75rem;letter-spacing:0.2em;margin-bottom:4px">まずはお気軽にフォームからどうぞ</div>
+      <div style="font-family:'Kaisei Decol',serif;font-size:1rem;color:var(--light-amber);letter-spacing:0.15em;margin-bottom:20px">↓ お問い合わせフォームへ（推奨）↓</div>
+      <div style="width:100%;height:1px;background:var(--border-accent);margin-bottom:24px"></div>
+      <div style="color:var(--dim-silver);font-size:0.75rem;letter-spacing:0.2em">お電話でのお問い合わせ</div>
       <div class="tel">052-745-7222</div>
       <div class="tel-sub">受付時間 平日 9:00〜17:00　／　FAX：052-745-7223</div>
-      <a href="mailto:info@zeimu.tax" class="mail-btn">メールで問い合わせる</a>
     </div>
 
     <div style="margin-top:48px">
       <div style="text-align:center;margin-bottom:24px">
-        <div style="font-family:'Kaisei Decol',serif;font-size:1.1rem;color:var(--light-gold);letter-spacing:0.2em;display:inline-block;border-bottom:3px double var(--gold);padding-bottom:8px">お問い合わせフォーム</div>
+        <div style="font-family:'Kaisei Decol',serif;font-size:1.1rem;color:var(--light-silver);letter-spacing:0.3em;display:inline-block;border-bottom:3px double var(--gold);padding-bottom:8px">お問い合わせフォーム</div>
         <div style="font-size:0.78rem;color:#CCA;letter-spacing:0.2em;margin-top:8px">CONTACT FORM</div>
       </div>
       <div style="background:#1A0500;border:2px solid rgba(212,160,23,0.4);padding:8px;overflow:hidden">
